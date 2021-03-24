@@ -1,12 +1,25 @@
 """An asnycio-based wrapper for `https://newton.now.sh`"""
 import sys
+import httpx
 from urllib.parse import quote
 
-import aiohttp
-
-ENDPOINTS = ["simplify", "factor", "derive", "integrate", "zeroes", "tangent",
-             "area", "cos", "sin", "tan", "arccos", "arcsin", "arctan", "abs",
-             "log"]
+ENDPOINTS = [
+    "simplify",
+    "factor",
+    "derive",
+    "integrate",
+    "zeroes",
+    "tangent",
+    "area",
+    "cos",
+    "sin",
+    "tan",
+    "arccos",
+    "arcsin",
+    "arctan",
+    "abs",
+    "log",
+]
 
 
 class Result:
@@ -25,15 +38,14 @@ class Result:
 async def _make_request(operation, expression):
     """Internal function to request a page by using a given string"""
 
-    encoded_expression = quote(expression, safe='')
+    encoded_expression = quote(expression, safe="")
     url = f"https://newton.now.sh/api/v2/{operation}/{encoded_expression}"
 
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as req:
-            assert isinstance(req, aiohttp.ClientResponse)
-
-            res = await req.json()
-            return Result(**res)
+    async with httpx.AsyncClient(http2=True) as session:
+        req = await session.get(url)
+        res = req.json()
+        await session.aclose()
+        return Result(**res)
 
 
 def wrap_coro(coro):

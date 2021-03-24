@@ -1,11 +1,11 @@
-## aionewton
+# aionewton
 
 An `asnycio`-based  wrapper for [Newton](https://newton.now.sh).
 The Github project can be found [here.](https://github.com/aunyks/newton-api)
 
 ## Installation
 ```
-pip install git+https://github.com/AndrielFR/aionewton
+pip install git+https://github.com/HitaloSama/aionewton
 ```
 
 ## Example

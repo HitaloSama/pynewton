@@ -6,7 +6,7 @@ wrapper.expose_endpoints(wrapper.sys.modules[__name__], *wrapper.ENDPOINTS)
 
 # Extensions for complex functions.
 def log(exp, base=None):
-    return wrapper.log(f'{base:d}|{exp}' if base else exp)
+    return wrapper.log(f"{base:d}|{exp}" if base else exp)
 
 
 def tangent(exp, x=None):
@@ -14,4 +14,4 @@ def tangent(exp, x=None):
 
 
 def area(exp, start=None, end=None):
-    return wrapper.area(f'{start:d}:{end:d}|{exp}' if start and end else exp)
+    return wrapper.area(f"{start:d}:{end:d}|{exp}" if start and end else exp)
