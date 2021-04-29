@@ -1,7 +1,8 @@
 """An asnycio-based wrapper for `https://newton.now.sh`"""
 import sys
-import httpx
 from urllib.parse import quote
+
+import httpx
 
 ENDPOINTS = [
     "simplify",
