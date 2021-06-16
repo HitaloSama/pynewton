@@ -9,7 +9,7 @@ repository = "https://github.com/HitaloSama/pynewton"
 
 [tool.poetry.dependencies]
 python = "^3.6"
-httpx = {version = "^0.17.1", extras = ["http2"]}
+httpx = {version = "^0.18.1", extras = ["http2"]}
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
